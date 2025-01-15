@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../styles/about.css'
-import TopBanner from '../components/topBanner'
 import ReactLogo from '../assets/react.svg'
 import PythonLogo from '../assets/python-logo-only.svg'
 import AzureLogo from '../assets/Microsoft_Azure.svg'
@@ -11,9 +10,7 @@ import { AnimatePresence, motion } from 'motion/react'
 export default class About extends Component {
   render() {
     return(
-      <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}  key="about" transition={{duration: .8}} >      
       <div className='aboutContainer'>
-        <TopBanner name='About'/>
           <h1>
             Who am I?
           </h1>
@@ -31,7 +28,6 @@ export default class About extends Component {
           <p className='bodyText'>
           </p>
       </div>
-      </motion.div>
         )
   }
 }
