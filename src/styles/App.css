@@ -48,9 +48,19 @@
   color: #000000;
   transform: scale(1);
   transition: transform 0.5s;
+  cursor: pointer;
 }
 
 .link:hover{
   transform: scale(1.2);
   transition: transform 0.5s;
+}
+
+.transition{
+  background-color: #e7e4e3;
+  height:100vh;
+  width: 100%;
+  position:absolute;
+  top:0;
+  left:0;
 }

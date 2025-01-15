@@ -1,31 +1,25 @@
-import { useState } from 'react'
-import { Link } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router'
 import './styles/App.css'
+import About from './pages/about.tsx'
+import Projects from './pages/projects.tsx'
+import Devlog from './pages/devlog.tsx'
+import Home from './pages/Home.tsx'
+import { AnimatePresence } from 'motion/react'
 
 function App() {
+
+
   return (
-    <>
-      <div className="mainContainer">
-        <div className="textContainer">
-        <p className="nameText">Tyler Bowen</p>
-        <p className="textElement">
-          <Link to="/devlog" className='link'> 
-            Dev Log
-          </Link>
-        </p>
-        <p className="textElement"> 
-          <Link to="/projects" className='link'> 
-            Projects
-          </Link>
-          </p>
-        <p className="textElement">          
-          <Link to="/about" className='link'> 
-            About Me
-          </Link>
-        </p>
-        </div>
-      </div>
-    </>
+    <BrowserRouter>
+    <AnimatePresence>
+    <Routes>
+      <Route path='/' element={<Home/>} />
+      <Route path='/about' element={<About/>}/>
+      <Route path='/projects' element={<Projects/>}/>
+      <Route path='/devlog' element={<Devlog/>}/>
+    </Routes>
+    </AnimatePresence>
+    </BrowserRouter>
   )
 }
 
