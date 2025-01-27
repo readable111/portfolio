@@ -1,8 +1,12 @@
 .devlogContainer{
-    width: 100%;
-    background-color: #e7e4e3;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-self: center;
+    height: auto;
+    overflow-y: scroll;
+}
+
+.devlogContainer ::-webkit-scrollbar{
+    display: none;
 }

@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import {AnimatePresence, motion} from 'motion/react'
-import { Link, redirect, useNavigate } from 'react-router'
-import { BrowserRouter, Routes, Route } from 'react-router'
-import { a } from 'motion/react-client'
 import About from './about'
 import Devlog from './devlog'
 import Projects from './projects'
@@ -38,17 +35,8 @@ export default class Home extends Component<{},{aboutSelected: boolean, projectS
     }
 
   render() {
-    let shownComponent;
-    if(this.state.aboutSelected){
-      shownComponent = <About/>
-    }else if(this.state.projectSelected){
-      shownComponent = <Projects/>
-    }else if(this.state.devSelected){
-      shownComponent = <Devlog/>
-    }
-
     return ( 
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{scaleY:0}} transition={{duration: .8}}>      
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration: .8}}>      
       <div className="mainContainer">
         <div className="textContainer">
         <p className="nameText">Tyler Bowen</p>

@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from 'motion/react'
 export default class About extends Component {
   render() {
     return(
-      <div className='aboutContainer'>
+      <div className='scrollableContainer'>
           <h1>
             Who am I?
           </h1>
