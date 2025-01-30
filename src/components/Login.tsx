@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../styles/login.css'
 import forge from 'node-forge'
 import axios from 'axios'
 
@@ -13,7 +14,7 @@ type Props = {
 
 
 
-export default class Login extends Component <{},Props>{
+export default class Login extends Component <{onClick:(event:React.MouseEvent) => void}, Props>{
     constructor(props:any){
         super(props)
         this.state = {
@@ -21,7 +22,7 @@ export default class Login extends Component <{},Props>{
             password:"",
             input:"", 
             publicKey:"",
-            signup: true
+            signup: true,
         }
         this.signup = this.signup.bind(this)
         this.submitInfo = this.submitInfo.bind(this)
@@ -109,24 +110,26 @@ export default class Login extends Component <{},Props>{
         <>
         { this.state.signup ? (
         <div className='inputContainer'>
+        <button onClick={this.props.onClick}>Close</button>
             <button onClick={()=>this.setState({signup:false})}>Already a user? Log in here</button>
             <label>Email:</label>
             <input type='text' id='email' onChange={this.handleEmailChange} value={this.state.email}></input>
+            <label>Password:</label>
             <input type= 'password' id='password' onChange={this.handlePasswordChange} value={this.state.input}></input>
             <button onClick={this.signup}>Sign Up</button>
         </div>)
         : ( 
         <div className='inputContainer'>
+        <button onClick={this.props.onClick}>Close</button>
             <button onClick={()=>this.setState({signup:true})}>New User? sign up here</button>
             <label>Email:</label>
             <input type='text' id='email' onChange={this.handleEmailChange} value={this.state.email}></input>
+            <label>Password:</label>
             <input type= 'password' id='password' onChange={this.handlePasswordChange} value={this.state.input}></input>
             <button onClick={this.submitInfo}>Login</button>
         </div>
-
         )
         }
-
         </>
     )
   }

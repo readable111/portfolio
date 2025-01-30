@@ -8,5 +8,6 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
+    background-color: #e7e4e3;
     border: 1px solid black; 
 }
