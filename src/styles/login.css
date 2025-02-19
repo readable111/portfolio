@@ -1,6 +1,6 @@
 .inputContainer{
-    height: 300px;
-    width: 200px;
+    height: 400px;
+    width:300px;
     position:fixed;
     display: flex;
     top: 50%;
@@ -10,4 +10,21 @@
     align-content: center;
     background-color: #e7e4e3;
     border: 1px solid black; 
+    border-radius: 3px;
+    transform: translate(-50%,-50%);
 }
+
+.closeButton{
+  align-self: flex-end;
+}
+
+.inputLabel{
+  margin-bottom: 5px;
+}
+
+.confirmButton{
+  margin-bottom: 20px;
+}
+
+
+
