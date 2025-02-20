@@ -31,17 +31,21 @@ export default class Login extends Component<{ onClick: (event: React.MouseEvent
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
   }
 
-  static contextType = GlobalContext;
+  static contextType = GlobalContext
 
-  submitInfo = async (event: any) => {
+
+  async componentDidMount(): Promise<void> {
     const response = await axios.get("http://127.0.0.1:5000/getPublicKey").then((response) => {
       return response
     }).catch((err) => {
       return err
     })
 
-    const { updateUser } = this.context;
     this.setState({ publicKey: response.data.publicKey })
+  }
+
+  submitInfo = async (event: any) => {
+    const { updateUser } = this.context
 
     const publicKeyObj = forge.pki.publicKeyFromPem(this.state.publicKey)
     try {
@@ -60,21 +64,17 @@ export default class Login extends Component<{ onClick: (event: React.MouseEvent
             data: error.data
           }
         })
-      await updateUser(User.data["response"])
+      sessionStorage.setItem("accessToken", User.data["response"])
+      updateUser(User.data["response"])
     } catch (err) {
       console.error("encryption error ", err)
     }
+    this.props.onClick
   }
 
   signup = async (event: any) => {
-    const response = await axios.get("http://127.0.0.1:5000/getPublicKey").then((response) => {
-      return response
-    }).catch((err) => {
-      return err
-    })
 
-    const { user, updateUser } = this.context
-    this.setState({ publicKey: response.data.publicKey })
+    const { updateUser } = this.context
 
     const publicKeyObj = forge.pki.publicKeyFromPem(this.state.publicKey)
     try {
@@ -93,11 +93,13 @@ export default class Login extends Component<{ onClick: (event: React.MouseEvent
             data: error.data
           }
         })
-      await updateUser(User.data["response"])
+      sessionStorage.setItem("accessToken", User.data["response"])
+      sessionStorage.setItem("isLoggedIn", "true")
+      updateUser(User.data["response"])
     } catch (err) {
       console.error("encryptiopn error ", err)
     }
-
+    this.props.onClick
   }
 
   handlePasswordChange = (event: any) => {

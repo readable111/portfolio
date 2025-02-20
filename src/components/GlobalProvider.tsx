@@ -4,12 +4,18 @@ import GlobalContext from "./GlobalContext";
 
 class GlobalProvider extends Component {
   state = {
-    user: "Guest",
-    isLoggedIn: false
+    user: sessionStorage.getItem("accessToken") || "Guest",
+    isLoggedIn: !!sessionStorage.getItem("accessToken")
   };
 
   updateUser = (user: any) => {
-    this.setState({ user: user, isLoggedIn: true });
+    if (user) {
+      sessionStorage.setItem("accessToken", user);
+      this.setState({ user, isLoggedIn: true });
+    } else {
+      sessionStorage.removeItem("accessToken");
+      this.setState({ user: "Guest", isLoggedIn: false });
+    }
   };
 
   render() {

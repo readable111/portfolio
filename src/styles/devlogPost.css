@@ -11,6 +11,10 @@
     overflow-y: hidden;
 }
 
+.link-disabled{
+  pointer-events:none;
+}
+
 .title{
   margin-left:5px;
   margin-bottom: 10px;

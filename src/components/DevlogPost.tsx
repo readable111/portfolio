@@ -17,7 +17,7 @@ export default class DevlogPost extends Component<Props, {}> {
 
   render() {
     return (
-      <Link to={`/post/${this.props.id}`}>
+      <Link to={`/post/${this.props.id}`} >
         <div className='postContainer'>
           <h2 className='title'>{this.props.title}</h2>
           <p className='text'>{this.props.text}</p>
